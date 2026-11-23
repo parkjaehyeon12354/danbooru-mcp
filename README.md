@@ -64,7 +64,18 @@ Claude Code 안에서는 `/plugin install danbooru --marketplace parkjaehyeon123
 ## 제한과 옵션
 
 - 로그인하지 않으면 한 번에 일반 태그 **2개**까지 조합할 수 있습니다. `rating:g`, `order:score` 같은 메타태그는 개수에 들어가지 않습니다.
-- Danbooru 계정의 API 키가 있으면 환경변수로 넣어 제한을 늘릴 수 있습니다 (Gold 계정은 태그 6개).
+### API 키 (선택)
+
+API 키는 **딸려오지 않습니다.** 없어도 모든 기능이 동작하고, 넣으면 제한이 늘어납니다 (Gold 계정은 태그 6개). 키는 Danbooru 계정 설정의 API Keys에서 직접 만듭니다. 자기 키를 남에게 공유하지 마세요.
+
+- **Claude Code 플러그인:** Claude Code 안에서 `/plugin configure danbooru`를 실행해 아이디와 키를 넣고, Claude Code를 다시 시작합니다. 키는 Claude Code의 보안 저장소에 들어갑니다.
+  설치할 때 함께 넣을 수도 있습니다.
+
+  ```powershell
+  claude plugin install danbooru --marketplace parkjaehyeon12354/danbooru-mcp --config login=아이디 --config api_key=키
+  ```
+
+- **Claude Desktop:** `mcpServers.danbooru` 안에 아래처럼 `env`를 추가합니다.
 
   ```json
   "env": { "DANBOORU_LOGIN": "아이디", "DANBOORU_API_KEY": "API 키" }
@@ -83,6 +94,7 @@ When a user asks you to install this repository, run these steps in order and re
    - If that `claude` version has no `--marketplace` option, run `claude plugin marketplace add parkjaehyeon12354/danbooru-mcp`, then `claude plugin install danbooru@danbooru-mcp`.
 3. Check it: `claude mcp list` should show `plugin:danbooru:danbooru` as connected. To test the network path, run `python <plugin dir>/danbooru_mcp.py --test` and expect a line starting with `ok:`.
 4. Tell the user to start a new Claude Code session so the tools load.
+5. API key (optional, not bundled): it works without one. Tell the user that if they have a Danbooru API key, they can enter it themselves with `/plugin configure danbooru` (stored in Claude Code's secure storage). Do not ask them to paste the key into the chat.
 
 Claude Desktop (no `claude` CLI): download `danbooru_mcp.py` to a folder the user picks, then add the `mcpServers` entry shown above to `claude_desktop_config.json` with that absolute path, and ask the user to restart Claude Desktop. Do not overwrite other entries in that file.
 

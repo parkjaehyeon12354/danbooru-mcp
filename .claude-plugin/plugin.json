@@ -1,6 +1,6 @@
 {
   "name": "danbooru",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Search Danbooru and view images from Claude. Python stdlib only, nothing saved to disk, works on networks that block Danbooru by SNI.",
   "author": {
     "name": "parkjaehyeon12354",
@@ -11,7 +11,28 @@
   "mcpServers": {
     "danbooru": {
       "command": "python",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/danbooru_mcp.py"]
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/danbooru_mcp.py"
+      ],
+      "env": {
+        "DANBOORU_LOGIN": "${user_config.login}",
+        "DANBOORU_API_KEY": "${user_config.api_key}"
+      }
+    }
+  },
+  "userConfig": {
+    "login": {
+      "type": "string",
+      "title": "Danbooru username",
+      "description": "Optional. With an API key, raises the 2-tag search limit and rate limits. Leave empty to use Danbooru anonymously.",
+      "default": ""
+    },
+    "api_key": {
+      "type": "string",
+      "title": "Danbooru API key",
+      "description": "Optional. Create one in your Danbooru account settings (API Keys). Stored in Claude Code's secure storage.",
+      "default": "",
+      "sensitive": true
     }
   }
 }
