@@ -1,0 +1,17 @@
+{
+  "name": "danbooru",
+  "version": "1.0.0",
+  "description": "Search Danbooru and view images from Claude. Python stdlib only, nothing saved to disk, works on networks that block Danbooru by SNI.",
+  "author": {
+    "name": "parkjaehyeon12354",
+    "url": "https://github.com/parkjaehyeon12354"
+  },
+  "repository": "https://github.com/parkjaehyeon12354/danbooru-mcp",
+  "license": "MIT",
+  "mcpServers": {
+    "danbooru": {
+      "command": "python",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/danbooru_mcp.py"]
+    }
+  }
+}

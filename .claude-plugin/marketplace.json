@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "danbooru-mcp",
+  "description": "Danbooru MCP server for Claude",
+  "owner": {
+    "name": "parkjaehyeon12354",
+    "url": "https://github.com/parkjaehyeon12354"
+  },
+  "plugins": [
+    {
+      "name": "danbooru",
+      "description": "Search Danbooru posts, tags and images from Claude.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
